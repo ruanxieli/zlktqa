@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2018/5/15 下午3:18
 # @Author  : Xieli Ruan
-# @Site    : 
-# @File    : zlktqa.py
+# @Site    :
+# @File    : box_office_forecasting.py
 # @Software: PyCharm
 
 from flask import Flask, render_template, request, redirect, url_for, session

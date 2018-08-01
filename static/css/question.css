@@ -3,3 +3,16 @@
     margin:0 auto;
     text-align:right;
 }
+
+.form-row{
+    float: left;
+    margin:0 auto;
+}
+
+.form-group li span{
+    width: 100px;
+    text-align:justify;
+    text-align-last:justify;
+    line-height:0;
+    border-radius: 50%;
+}
