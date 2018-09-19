@@ -1,5 +1,8 @@
 .logo{
     width:100px;
+    overflow:hidden;
+    vertical-align: top;
+
 }
 
 body{
@@ -19,3 +22,4 @@ body{
 
    text-align:center;
 }
+

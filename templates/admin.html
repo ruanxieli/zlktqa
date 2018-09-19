@@ -1,0 +1,42 @@
+{%  extends 'base.html' %}
+{% block title %}系统管理{% endblock  %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+
+{% endblock %}
+
+{% block main %}
+
+<table class="table">
+    <caption>用户列表</caption>
+    <th>选择</th>
+    <th>用户名</th>
+    <th>手机号码</th>
+    <th>用户密码</th>
+    <th>操作</th>
+
+
+    {%  for user in users %}
+
+        <tr>
+            <td>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox">
+                    </label>
+                </div>
+            </td>
+            <td>{{user.username}}</td>
+            <td>{{user.telephone}}</td>
+            <td>{{user.password}}</td>
+            <td>
+                <button type="button" class="btn btn-info">删除</button>
+            </td>
+
+        </tr>
+
+    {%  endfor %}
+
+</table>
+{% endblock %}

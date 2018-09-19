@@ -59,7 +59,7 @@ def regist():
             if password1 != password2:
                 return u'两次密码不相等'
             else:
-                user = User(telephone=telephone, username=username, password=password1).first()
+                user = User(telephone=telephone, username=username, password=password1)
                 db.session.add(user)
                 db.session.commit()
                 #  如果注册成功，则跳转到登录页面
@@ -69,6 +69,7 @@ def regist():
 def logout():
     # session.pop('user_id')
     # del session['user_id']
+
     session.clear()
     return redirect(url_for('login'))
 
@@ -87,6 +88,50 @@ def question():
         db.session.add(question)
         db.session.commit()
         return redirect(url_for('index'))
+
+
+
+
+
+@app.route('/admin/', methods=['GET', 'POST'])
+@login_required
+def administator():
+    context={
+        'users':User.query.order_by('-telephone').all()
+    }
+    return render_template('admin.html',**context)
+
+    # if request.method=='GET':
+    #     return render_template('admin.html')
+    # else:
+    #     title=request.form.get('title')
+    #     content=request.form.get('content')
+    #     question=Question(title=title,content=content)
+    #     user_id=session.get('user_id')
+    #     user=User.query.filter(User.id==user_id).first()
+    #     question.author=user
+    #     db.session.add(question)
+    #     db.session.commit()
+    #     return redirect(url_for('index'))
+
+'''
+@app.route('/result/', methods=['GET', 'POST'])
+@login_required
+def question():
+    if request.method=='GET':
+        return render_template('question.html')
+    else:
+        title=request.form.get('title')
+        content=request.form.get('content')
+        question=Question(title=title,content=content)
+        user_id=session.get('user_id')
+        user=User.query.filter(User.id==user_id).first()
+        question.author=user
+        db.session.add(question)
+        db.session.commit()
+        return redirect(url_for('index'))
+'''
+
 
 @app.route('/detail/<question_id>')
 def detail(question_id):
